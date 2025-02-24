@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-opacity-10 bg-white backdrop-blur-lg border border-white/10 rounded-xl;
+  }
+  
+  .neon-border {
+    @apply relative overflow-hidden;
+  }
+  
+  .neon-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #00f2fe);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .neon-border:hover::before {
+    opacity: 0.5;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#4facfe];
+  }
+
+  /* Custom cursor styles */
+  .custom-cursor {
+    @apply fixed pointer-events-none z-[9999];
+    width: 1px;
+    height: 1px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 50px 25px rgba(255, 255, 255, 0.3);
+    opacity: 0.6;
+    mix-blend-mode: screen;
+  }
+
+  /* Frame hover effect */
+  .frame-hover {
+    @apply transition-colors duration-300;
+  }
+
+  .frame-hover:hover {
+    @apply bg-white/10;
+  }
+}
